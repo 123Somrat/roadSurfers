@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Dropdown } from "flowbite-react";
 
 interface Booking {
@@ -22,9 +23,15 @@ interface StationDropDownProps {
 
 export default function StationDropDown({ stations }: StationDropDownProps) {
 
+   // hold the selected station
+  const [station,setSelectedStation] = useState<string>('')
+
+
+
   // create handleer function for collect selected station name
   const handleStation = (name:string)=>{
-     console.log(name)
+    // set Current selected station name in state
+     setSelectedStation(name)
 }
 
 
