@@ -28,7 +28,7 @@ export default function Navbar() {
         <Logo />
        <StationDropDown stations={stations} handleStation={handleStation} station={station}/>
     </div>
-     {station && <Bookings stations={stations} station={station}/>} 
+     {station && <Bookings stations={stations} selectedStation={station}/>} 
   </div>
   )
 }
