@@ -28,6 +28,8 @@ interface Booking {
   }
 
 
+  
+
 export default function Bookings({stations , selectedStation}:StationDropDownProps) {
 
     // hold user selected date
@@ -56,6 +58,23 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
           setOpenModal(true)
         
       };
+
+// Custome style for React calender
+const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: '40%',
+      height: '40%'
+    },
+  
+  };
+
+
       
       // Format the booking startdate and then retun the formatted date array
       const getBookingsForDate = (date:Date) => {
@@ -81,6 +100,7 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
       onClickDay={handleDateClick}
       onChange={handleWeekChange}
       tileContent={renderTileContent}
+      
       />
 
 {/*Showing bookings in MOdal respective on Date */}
