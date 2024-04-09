@@ -1,9 +1,32 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import api from "../api/api";
 
 
-export default function useFetchData(url:string) {
 
+// define Booking data types
+interface Booking {
+    id: string;
+    pickupReturnStationId: string;
+    customerName: string;
+    startDate: string;
+    endDate: string;
+  }
+  
+  // define Api response data types
+  interface Station {
+    id: string;
+    name: string;
+    bookings: Booking[];
+  }
+
+
+
+
+export default function useFetchData(url:string) {
+     
+    // for hold fetched data which is we got from api response
+     const [data , setData ] = useState<Station>()
+     
     //  useEffect for  side Effect like data fetching
     useEffect(()=>{
          
@@ -12,7 +35,7 @@ export default function useFetchData(url:string) {
          try{   
             const response = await api.get(url)
             const data = await response.data
-
+            setData(data)
          }catch(error){
              
             console.log(error)
