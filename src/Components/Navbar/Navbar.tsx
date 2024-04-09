@@ -23,7 +23,7 @@ export default function Navbar() {
   return (
     <div className="flex justify-between p-2 bg-[#7bdcb5]">
        <Logo/>
-       <StationDropDown stations={stations} />
+       <StationDropDown stations={stations} handleStation={handleStation} station={station}/>
     </div>
   )
 }

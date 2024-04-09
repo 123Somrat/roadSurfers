@@ -1,4 +1,3 @@
-
 import { Dropdown } from "flowbite-react";
 
 interface Booking {
@@ -19,27 +18,28 @@ interface Station {
 // Define Props data types
 interface StationDropDownProps {
   stations?: Station[];
+  handleStation: (stationName: string) => void;
+  station: string;
 }
 
-export default function StationDropDown({ stations }: StationDropDownProps) {
-
-   
-
-
-
- 
-
-
-
+export default function StationDropDown({
+  stations,
+  handleStation,
+  station,
+}: StationDropDownProps) {
   return (
     <div>
-      <Dropdown label="Choose station" color="white">
+      <Dropdown 
+      label={station ? station : "Choose station"}
+      color="white">
         {stations &&
           stations?.map((station) => (
-            <Dropdown.Item 
-            key={station.id}
-            onClick={()=>handleStation(station.name)}
-            >{station.name}</Dropdown.Item>
+            <Dropdown.Item
+              key={station.id}
+              onClick={() => handleStation(station.name)}
+            >
+              {station.name}
+            </Dropdown.Item>
           ))}
       </Dropdown>
     </div>
