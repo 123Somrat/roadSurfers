@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
+
 export default function Bookings() {
 
     // hold user selected date
@@ -8,6 +9,7 @@ export default function Bookings() {
 
     //hold Current week
     const [currentWeek, setCurrentWeek] = useState<Date>(new Date("2020-05-01T15:43:54.055Z"));
+
     // create handleDateClick function for getting user clicked date
     const handleDateClick = (date: Date) => {
          // set date on selected date state
@@ -20,6 +22,8 @@ export default function Bookings() {
           setCurrentWeek(date)
         
       };
+      
+    console.log(selectedDate)
 
 
 
@@ -29,9 +33,17 @@ export default function Bookings() {
       nextLabel="next" 
       prevLabel="prev" 
       showWeekNumbers 
+      value={currentWeek}
       onClickDay={handleDateClick}
       onChange={handleWeekChange}
       />
+
+
+     
+ 
+
+
+
     </div>
   );
 }
