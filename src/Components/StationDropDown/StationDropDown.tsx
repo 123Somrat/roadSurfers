@@ -17,16 +17,18 @@ interface Station {
 
 // Define Props data types
 interface StationDropDownProps {
-  stations?: Station;
- 
-
+  stations?: Station[];
 }
 
-export default function StationDropDown({stations}:StationDropDownProps) {
-  console.log(stations)
+export default function StationDropDown({ stations }: StationDropDownProps) {
   return (
     <div>
-        <h1>Choose Station</h1>
+      <Dropdown label="Choose station" color="white">
+        {stations &&
+          stations?.map((station) => (
+            <Dropdown.Item key={station.id}>{station.name}</Dropdown.Item>
+          ))}
+      </Dropdown>
     </div>
-  )
+  );
 }
