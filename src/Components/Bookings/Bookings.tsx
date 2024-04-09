@@ -2,7 +2,30 @@ import { useState } from "react";
 import { Calendar } from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 
-export default function Bookings() {
+
+interface Booking {
+    id: string;
+    pickupReturnStationId: string;
+    customerName: string;
+    startDate: string;
+    endDate: string;
+  }
+  
+  // define stations data types
+  interface Station {
+    id: string;
+    name: string;
+    bookings: Booking[];
+  }
+  
+  // Define Props data types
+  interface StationDropDownProps {
+    stations?: Station[];
+    station: string;
+  }
+
+
+export default function Bookings({stations , station}:StationDropDownProps) {
 
     // hold user selected date
     const [selectedDate, setSelectedDate] = useState<Date>();
@@ -23,7 +46,7 @@ export default function Bookings() {
         
       };
       
-    console.log(selectedDate)
+    console.log(selectedDate,stations,station)
 
 
 

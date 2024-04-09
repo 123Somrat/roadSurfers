@@ -5,6 +5,7 @@ import StationDropDown from "../StationDropDown/StationDropDown";
 import Bookings from "../Bookings/Bookings";
 
 
+
 export default function Navbar() {
 
      // Fetching all stations
