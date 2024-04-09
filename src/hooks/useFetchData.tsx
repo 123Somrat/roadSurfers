@@ -51,4 +51,6 @@ export default function useFetchData(url:string) {
       fetchingData()
 
     },[])
+
+    return data
 }
