@@ -2,6 +2,7 @@ import { useState } from "react";
 import useFetchData from "../../hooks/useFetchData";
 import Logo from "../Logo/Logo";
 import StationDropDown from "../StationDropDown/StationDropDown";
+import Bookings from "../Bookings/Bookings";
 
 
 export default function Navbar() {
@@ -21,9 +22,12 @@ export default function Navbar() {
 
 
   return (
+    <div >
     <div className="flex justify-between p-2 bg-[#7bdcb5]">
-       <Logo/>
+        <Logo />
        <StationDropDown stations={stations} handleStation={handleStation} station={station}/>
     </div>
+     {station && <Bookings />} 
+  </div>
   )
 }
