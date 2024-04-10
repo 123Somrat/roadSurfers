@@ -19,7 +19,7 @@ interface Station {
 
 export default function useFetchData(url: string) {
   // for hold fetched data which is we got from api response
-  const [data, setData] = useState<Station>();
+  const [data, setData] = useState<Station | Booking>();
 
   //  useEffect for  side Effect like data fetching
   useEffect(() => {
