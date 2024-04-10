@@ -100,7 +100,7 @@ const customStyles = {
       onClickDay={handleDateClick}
       onChange={handleWeekChange}
       tileContent={renderTileContent}
-      
+      className={'w-[50%] h-[50%]  top-[50%] left-[50%] right-[auto], bottom-[auto]'}
       />
 
 {/*Showing bookings in MOdal respective on Date */}
