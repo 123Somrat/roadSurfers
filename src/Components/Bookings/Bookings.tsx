@@ -102,10 +102,10 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
           <div className="space-y-6">
           {selectedDate && 
               getBookingsForDate(selectedDate)?.map((booking,index) => (
-               <div className="flex justify-between" key={booking.id}>
-                   <li key={booking.id} className="list-none"><span className="font-bold">{index+1} .  </span>  {booking.customerName}</li>
-                  <Link to={`/stations/${choosenStationBookings?.id}/bookings/${booking.id}`}><button onClick={handleCloseModal} className="text-white bg-emerald-400 hover:bg-emerald-500 p-[3px] w-16 rounded-sm">Details</button></Link> 
-               </div>   
+           <div className="flex justify-between" key={booking.id}>
+            <li key={booking.id} className="list-none"><span className="font-bold">{index+1} .  </span>  {booking.customerName}</li>
+            <Link to={`/stations/${choosenStationBookings?.id}/bookings/${booking.id}`}><button onClick={handleCloseModal} className="text-white bg-emerald-400 hover:bg-emerald-500 p-[3px] w-16 rounded-sm">Details</button></Link> 
+         </div> 
             ))} 
           </div>
         </Modal.Body>
