@@ -14,8 +14,8 @@ export default function BookingDetails() {
     // Fething Bookings data depends on station and booking id
     const booking = useFetchData(`/stations/${stationId}/bookings/${booking_id}`)
     
-    
-     
+    const stationNames = ["Berlin",'Munich','Frankfurt',"Lisbon",'Barcelona','Lyon']
+    const stationName = stationNames[stationId-1]
     // Customer name
     const customerName = booking?.customerName
 
@@ -56,7 +56,7 @@ export default function BookingDetails() {
         </div>
           <div>
           <p className="p-2">{customerName}</p>
-          <p className="p-2">'berlin</p>
+          <p className="p-2">{stationName}</p>
           <p className="p-2">{bookingStartDate}</p>
           <p className="p-2">{bookingDuration} Days</p>
           </div>
