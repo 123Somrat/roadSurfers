@@ -92,7 +92,7 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
       onClickDay={handleDateClick}
       onChange={handleWeekChange}
       tileContent={renderTileContent}
-      className={'w-[50%] h-[50%]  top-[50%] left-[50%] right-[auto], bottom-[auto]'}
+      className={'w-full md:w-[50%] h-[50%]  top-[50%] left-[50%] right-[auto], bottom-[auto]'}
       />
 
 {/*Showing bookings in MOdal respective on Date */}
