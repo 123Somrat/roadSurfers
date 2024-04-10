@@ -20,7 +20,8 @@ interface Station {
 export default function useFetchData(url: string) {
   // for hold fetched data which is we got from api response
   const [data, setData] = useState<Station | Booking>();
-
+  const [loading , setLoading]= useState(true)
+  const [error , setError]= useState<unknown>(null)
   //  useEffect for  side Effect like data fetching
   useEffect(() => {
     // create async Data Fetcher function
@@ -28,9 +29,14 @@ export default function useFetchData(url: string) {
       try {
         const response = await api.get(url);
         const data = await response.data;
-        setData(data);
-      } catch (error) {
-        console.log(error);
+
+        if(data){
+          setData(data);
+          setLoading(false)
+        }
+       
+      } catch (error:unknown) {
+        setError(error);
       }
     };
 
@@ -43,5 +49,5 @@ export default function useFetchData(url: string) {
     };
   }, []);
 
-  return data;
+  return{data , loading , error};
 }
