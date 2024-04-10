@@ -65,20 +65,6 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
          setOpenModal(false)
       }
 
-// Custome style for React calender
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      width: '40%',
-      height: '40%'
-    },
-  
-  };
 
 
       

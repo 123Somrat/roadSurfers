@@ -9,12 +9,22 @@ export default function BookingDetails() {
     // Fething Bookings data depends on station and booking id
     const booking = useFetchData(`/stations/${stationId}/bookings/${booking_id}`)
     
-    console.log(booking)
+    
+     
+    // Customer name
+    const customerName = booking?.customerName
+
+    // getting startDate fron booking
     const startdate = booking?.startDate
+    // getting endDate from booking
     const endDate = booking?.endDate
-
+    // calculate total trip duration depends on startDate and endDate
     const duration = differenceInDays(endDate,startdate)
-
+    
+    // formatting the startDate
+    const bookingStartDate = format(new Date(startdate ? startdate : '2020-05-06T17:02:22.932Z'), "yyyy-MM-dd");
+    
+   
   return (
     <div>
          <h1>Hi i am booking Deatils page</h1>
