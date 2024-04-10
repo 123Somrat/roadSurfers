@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+//import { Outlet } from "react-router-dom";
 import Navbar from "../Components/Navbar/Navbar";
 
 export default function Layouts() {
@@ -7,10 +7,10 @@ export default function Layouts() {
       <nav>
           <Navbar/>
       </nav>
-
-      <div>
+{/* <div>
         <Outlet />
-      </div>
+      </div>*/}
+      
     </div>
   );
 }

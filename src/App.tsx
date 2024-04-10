@@ -7,12 +7,11 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Layouts />}>
-          <Route
-            path="/stations/:stationId/bookings/:booking_id"
-            element={<BookingDetails/>}
-          />
-        </Route>
+        <Route path="/" element={<Layouts />} />
+        <Route
+          path="/stations/:stationId/bookings/:booking_id"
+          element={<BookingDetails />}
+        />
       </Routes>
     </div>
   );
