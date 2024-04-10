@@ -49,5 +49,5 @@ export default function useFetchData(url: string) {
     };
   }, []);
 
-  return{data , loading , error};
+  return data;
 }
