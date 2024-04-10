@@ -69,14 +69,14 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
 
       
       // Format the booking startdate and then retun the formatted date array
-      const getBookingsForDate = (date:Date) => {
+      const getBookingsForDate = (date:Date|[]) => {
         const formattedDate = format(date, 'yyyy-MM-dd');
         return choosenStationBookings?.bookings.filter((booking) => format(booking.startDate, 'yyyy-MM-dd' ) === formattedDate);
       };
 
       const renderTileContent = ({ date }) => {
         const bookingsForDate = getBookingsForDate(date);
-        return bookingsForDate?.length > 0 ? <div className="text-emerald-500">Booked</div> : null;
+        return bookingsForDate?.length > 0 ? <div className="text-emerald-500 text-xs">Booked</div> : null;
       };
 
 
@@ -100,13 +100,13 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
         <Modal.Header>Bookings for {selectedDate && format(selectedDate, 'dd/MM/yyyy')}</Modal.Header>
         <Modal.Body>
           <div className="space-y-6">
-          {selectedDate &&
+          {selectedDate && 
               getBookingsForDate(selectedDate)?.map((booking,index) => (
                <div className="flex justify-between" key={booking.id}>
                    <li key={booking.id} className="list-none"><span className="font-bold">{index+1} .  </span>  {booking.customerName}</li>
                   <Link to={`/stations/${choosenStationBookings?.id}/bookings/${booking.id}`}><button onClick={handleCloseModal} className="text-white bg-emerald-400 hover:bg-emerald-500 p-[3px] w-16 rounded-sm">Details</button></Link> 
                </div>   
-            ))}
+            ))} 
           </div>
         </Modal.Body>
         <Modal.Footer>
