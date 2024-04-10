@@ -59,6 +59,12 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
         
       };
 
+      // Closed the modal when clicked on details button
+      const handleCloseModal =()=>{
+         // Set false in state to close the modal when clicked on details button
+         setOpenModal(false)
+      }
+
 // Custome style for React calender
 const customStyles = {
     content: {
@@ -112,7 +118,7 @@ const customStyles = {
               getBookingsForDate(selectedDate)?.map((booking,index) => (
                <div className="flex justify-between" key={booking.id}>
                    <li key={booking.id} className="list-none"><span className="font-bold">{index+1} .  </span>  {booking.customerName}</li>
-                  <Link to={`/stations/${choosenStationBookings?.id}/bookings/${booking.id}`}><button className="text-white bg-emerald-400 hover:bg-emerald-500 p-[3px] w-16 rounded-sm">Details</button></Link> 
+                  <Link to={`/stations/${choosenStationBookings?.id}/bookings/${booking.id}`}><button onClick={handleCloseModal} className="text-white bg-emerald-400 hover:bg-emerald-500 p-[3px] w-16 rounded-sm">Details</button></Link> 
                </div>   
             ))}
           </div>
