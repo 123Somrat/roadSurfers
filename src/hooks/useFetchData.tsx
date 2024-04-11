@@ -12,16 +12,16 @@ interface Booking {
 
 // define Api response data types
 interface Station {
-  id: string,
-  name: string,
-  bookings: Booking[]
+  id: string;
+  name: string;
+  bookings: Booking[];
 }
 
 export default function useFetchData(url: string) {
   // for hold fetched data which is we got from api response
   const [data, setData] = useState<Station[] | []>();
- // const [loading , setLoading]= useState(true)
- // const [error , setError]= useState<unknown>(null)
+  // const [loading , setLoading]= useState(true)
+  // const [error , setError]= useState<unknown>(null)
   //  useEffect for  side Effect like data fetching
   useEffect(() => {
     // create async Data Fetcher function
@@ -30,13 +30,12 @@ export default function useFetchData(url: string) {
         const response = await api.get(url);
         const data = await response.data;
 
-        if(data){
+        if (data) {
           setData(data);
           //setLoading(false)
         }
-       
-      } catch (error:unknown) {
-       // setError(error);
+      } catch (error: unknown) {
+        // setError(error);
       }
     };
 
@@ -48,11 +47,8 @@ export default function useFetchData(url: string) {
       console.log("Cleanup: Component unmounted.");
     };
   }, []);
-  
-  if(data?.length==0){
-     return[]
-  }
 
-  return data
+  console.log("i am fro useFetchm", data);
 
+  return data;
 }
