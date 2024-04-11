@@ -3,23 +3,19 @@ import api from "../api/api";
 
 // define Booking data types
 interface Booking {
-  id: string;
-  pickupReturnStationId: string;
-  customerName: string;
-  startDate: string;
-  endDate: string;
+  id?: string;
+  pickupReturnStationId?: string;
+  customerName?: string;
+  startDate?: string;
+  endDate?: string;
 }
 
 // define Api response data types
-interface Station {
-  id: string;
-  name: string;
-  bookings: Booking[];
-}
 
-export default function useFetchData(url: string) {
+
+export default function useFetchBooking(url: string) {
   // for hold fetched data which is we got from api response
-  const [data, setData] = useState<Station[] | []>();
+  const [data, setData] = useState<Booking>();
   // const [loading , setLoading]= useState(true)
   // const [error , setError]= useState<unknown>(null)
   //  useEffect for  side Effect like data fetching
@@ -54,3 +50,4 @@ export default function useFetchData(url: string) {
 
   
 }
+

@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from "react-router-dom";
-import useFetchData from "../../hooks/useFetchData";
 import { differenceInDays, format } from "date-fns";
+import useFetchBooking from "../../hooks/useFetchBooking";
 
 export default function BookingDetails() {
   // import useNavigate hook from react router dom to redirect user to home
@@ -11,26 +11,33 @@ export default function BookingDetails() {
   const { stationId, booking_id } = useParams();
 
   // Fething Bookings data depends on station and booking id
-  const booking = useFetchData(`/stations/${stationId}/bookings/${booking_id}`);
+  const booking = useFetchBooking(`/stations/${stationId}/bookings/${booking_id}`);
 
-  console.log(Array.isArray(booking));
-
-  const stationNames = [
+ 
+  {/*   const stationNames = [
     "Berlin",
     "Munich",
     "Frankfurt",
     "Lisbon",
     "Barcelona",
     "Lyon",
-  ];
-  const stationName = stationNames[stationId - 1];
-  // Customer name
-  const customerName = booking?.customerName;
+  ]; */}
 
-  // getting startDate fron booking
-  const startdate = booking?.startDate;
-  // getting endDate from booking
-  const endDate = booking?.endDate;
+ 
+  //const stationName = stationNames[stationId - 1];
+  // Customer name
+
+
+  
+    const customerName = booking?.customerName;
+
+    // getting startDate fron booking
+    const startdate = booking?.startDate ? booking?.startDate : '';
+    // getting endDate from booking
+    const endDate = booking?.endDate ? booking?.endDate : '';
+
+  
+ 
   // calculate total trip duration depends on startDate and endDate
   const bookingDuration = differenceInDays(endDate, startdate);
 
@@ -67,7 +74,7 @@ export default function BookingDetails() {
         </div>
         <div>
           <p className="p-2">{customerName}</p>
-          <p className="p-2">{stationName}</p>
+          <p className="p-2">berlin</p>
           <p className="p-2">{bookingStartDate}</p>
           <p className="p-2">{bookingDuration} Days</p>
         </div>
