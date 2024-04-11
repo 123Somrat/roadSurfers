@@ -3,7 +3,7 @@ import useFetchData from "../../hooks/useFetchData";
 import Logo from "../Logo/Logo";
 import StationDropDown from "../StationDropDown/StationDropDown";
 import Bookings from "../Bookings/Bookings";
-import { useLocation } from "react-router-dom";
+
 
 
 
@@ -12,8 +12,7 @@ export default function Navbar() {
      // Fetching all stations
     const stations = useFetchData("/stations");
 
-    // get the current pathName
-     const location = useLocation();
+
      
    // hold the selected station
   const [station,setSelectedStation] = useState<string>('')

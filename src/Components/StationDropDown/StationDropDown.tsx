@@ -17,7 +17,7 @@ interface Station {
 
 // Define Props data types
 interface StationDropDownProps {
-  stations?: Station[];
+  stations?:Station[];
   handleStation: (stationName: string) => void;
   station: string;
 }
@@ -27,6 +27,9 @@ export default function StationDropDown({
   handleStation,
   station,
 }: StationDropDownProps) {
+
+
+
   return (
     <div>
       <Dropdown 

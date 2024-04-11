@@ -16,14 +16,14 @@ interface Booking {
   
   // define stations data types
   interface Station {
-    id: string;
-    name: string;
-    bookings: Booking[];
+    id?: string;
+    name?: string;
+    bookings?: Booking[];
   }
   
   // Define Props data types
   interface StationDropDownProps {
-    stations?: Station[];
+    stations?: Station[] ;
     selectedStation: string;
   }
 
