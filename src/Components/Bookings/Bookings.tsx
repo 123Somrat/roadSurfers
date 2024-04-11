@@ -44,6 +44,14 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
    // find the selected station data from Stations
    const choosenStationBookings = stations?.find(station=>station.name===selectedStation)
 
+   /*
+
+if(stations?.length===0){
+   return <p>Data Loading......</p>
+}
+
+*/
+   const bookings = choosenStationBookings?.bookings
     // create handleDateClick function for getting user clicked date
     const handleDateClick = (date: Date) => {
          // set date on selected date state
@@ -69,14 +77,16 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
 
       
       // Format the booking startdate and then retun the formatted date array
-      const getBookingsForDate = (date:Date|[]) => {
+      const getBookingsForDate = (date:Date) => {
         const formattedDate = format(date, 'yyyy-MM-dd');
-        return choosenStationBookings?.bookings.filter((booking) => format(booking.startDate, 'yyyy-MM-dd' ) === formattedDate);
+        console.log(formattedDate)
+        return bookings?.filter((booking) => format(booking.startDate, 'yyyy-MM-dd' ) === formattedDate);
       };
 
-      const renderTileContent = ({ date }) => {
+      // showing booked string where booking is exeist
+      const renderTileContent = ({date}:any) => {
         const bookingsForDate = getBookingsForDate(date);
-        return bookingsForDate?.length > 0 ? <div className="text-emerald-500 text-xs">Booked</div> : null;
+        return bookingsForDate?.length === 0 ? null : <div className="text-emerald-500 text-xs">Booked</div>;
       };
 
 
@@ -110,8 +120,7 @@ export default function Bookings({stations , selectedStation}:StationDropDownPro
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button className="bg-emerald-500 text-white " onClick={() => setOpenModal(false)}>Close</Button>
-        
+          <Button className="bg-emerald-400 text-white  hover:bg-emerald-500" onClick={() => setOpenModal(false)}>Close</Button>
         </Modal.Footer>
       </Modal>
      
