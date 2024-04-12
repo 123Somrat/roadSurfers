@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { differenceInDays, format } from "date-fns";
 import useFetchBooking from "../../hooks/useFetchBooking";
+import { useContext } from "react";
+import { StationContext } from "../../Context/Context";
 
 export default function BookingDetails() {
   // import useNavigate hook from react router dom to redirect user to home
@@ -11,21 +13,12 @@ export default function BookingDetails() {
   const { stationId, booking_id } = useParams();
 
   // Fething Bookings data depends on station and booking id
-  const booking = useFetchBooking(`/stations/${stationId}/bookings/${booking_id}`);
+  const booking = useFetchBooking(`/api/stations/${stationId}/bookings/${booking_id}`);
 
- 
-  {/*   const stationNames = [
-    "Berlin",
-    "Munich",
-    "Frankfurt",
-    "Lisbon",
-    "Barcelona",
-    "Lyon",
-  ]; */}
+ // getting Station name from StationContext
 
+ const {selectedStation} = useContext(StationContext)
  
-  //const stationName = stationNames[stationId - 1];
-  // Customer name
 
 
   
@@ -74,7 +67,7 @@ export default function BookingDetails() {
         </div>
         <div>
           <p className="p-2">{customerName}</p>
-          <p className="p-2">berlin</p>
+          <p className="p-2">{selectedStation}</p>
           <p className="p-2">{bookingStartDate}</p>
           <p className="p-2">{bookingDuration} Days</p>
         </div>

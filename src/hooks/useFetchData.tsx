@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../api/api";
+import { fetchData } from "../utils/fetchData";
 
 // define Booking data types
 interface Booking {
@@ -20,16 +20,12 @@ interface Station {
 export default function useFetchData(url: string) {
   // for hold fetched data which is we got from api response
   const [data, setData] = useState<Station[] | []>();
-  // const [loading , setLoading]= useState(true)
-  // const [error , setError]= useState<unknown>(null)
-  //  useEffect for  side Effect like data fetching
+
   useEffect(() => {
     // create async Data Fetcher function
     const fetchingData = async () => {
       try {
-        const response = await api.get(url);
-        const data = await response.data;
-
+        const data = await fetchData(url);
         if (data) {
           setData(data);
           //setLoading(false)
@@ -48,9 +44,5 @@ export default function useFetchData(url: string) {
     };
   }, []);
 
-
-    return data;
-  
-
-  
+  return data;
 }

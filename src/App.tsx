@@ -1,20 +1,25 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Layouts from "./LayOuts/Layouts";
-import "../src/index.css";
+import "./index.css";
 import BookingDetails from "./Pages/BookingDetails/BookingDetails";
+import Bookings from "./Components/Bookings/Bookings";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layouts />} />
-        <Route
-          path="/stations/:stationId/bookings/:booking_id"
-          element={<BookingDetails />}
-        />
+        <Route path="/" element={<Layouts />}>
+          <Route path="/" element={<Bookings />} />
+          <Route
+            path="/stations/:stationId/bookings/:booking_id"
+            element={<BookingDetails />}
+          />
+        </Route>
       </Routes>
-    </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+//

@@ -12,12 +12,12 @@ interface Booking {
 interface Station {
   id: string;
   name: string;
-  bookings: Booking[];
+  bookings?: Booking[];
 }
 
 // Define Props data types
 interface StationDropDownProps {
-  stations?:Station[];
+  stations?: Station[];
   handleStation: (stationName: string) => void;
   station: string;
 }
@@ -27,14 +27,9 @@ export default function StationDropDown({
   handleStation,
   station,
 }: StationDropDownProps) {
-
-
-
   return (
     <div>
-      <Dropdown 
-      label={station ? station : "Choose station"}
-      color="white">
+      <Dropdown label={station ? station : "Choose station"} color="white">
         {stations &&
           stations?.map((station) => (
             <Dropdown.Item

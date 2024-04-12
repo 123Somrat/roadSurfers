@@ -1,37 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Calendar } from "react-calendar";
 import { Button, Modal } from "flowbite-react";
 import { format } from "date-fns";
-import 'react-calendar/dist/Calendar.css';
+import "react-calendar/dist/Calendar.css";
 import { Link } from "react-router-dom";
+import { StationContext } from "../../Context/Context";
+import useFetchData from "../../hooks/useFetchData";
 
-interface Booking {
-  id: string;
-  pickupReturnStationId: string;
-  customerName: string;
-  startDate: string;
-  endDate: string;
-}
-
-// define stations data types
-interface Station {
-  id?: string;
-  name?: string;
-  bookings?: Booking[];
-}
-
-// Define Props data types
-interface StationDropDownProps {
-  stations?: Station[];
-  selectedStation: string;
-}
-
-export default function Bookings({
-  stations,
-  selectedStation,
-}: StationDropDownProps) {
+export default function Bookings() {
   // hold user selected date
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const { selectedStation } = useContext(StationContext);
+  console.log(selectedStation);
+  const stations = useFetchData("/api/stations");
 
   //hold Current week
   const [currentWeek, setCurrentWeek] = useState<Date>(
@@ -46,13 +27,6 @@ export default function Bookings({
     (station) => station.name === selectedStation
   );
 
-  /*
-
-if(stations?.length===0){
-   return <p>Data Loading......</p>
-}
-
-*/
   const bookings = choosenStationBookings?.bookings;
   // create handleDateClick function for getting user clicked date
   const handleDateClick = (date: Date) => {
@@ -77,10 +51,12 @@ if(stations?.length===0){
   // Format the booking startdate and then retun the formatted date array
   const getBookingsForDate = (date: Date) => {
     const formattedDate = format(date, "yyyy-MM-dd");
-    console.log(formattedDate);
-    return bookings?.filter(
-      (booking) => format(booking.startDate, "yyyy-MM-dd") === formattedDate
-    );
+
+    const bookingsForDate =
+      bookings?.filter(
+        (booking) => format(booking.startDate, "yyyy-MM-dd") === formattedDate
+      ) || [];
+    return bookingsForDate;
   };
 
   // showing booked string where booking is exeist
