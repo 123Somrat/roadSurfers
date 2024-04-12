@@ -68,7 +68,7 @@ export default function Bookings() {
   };
 
   return (
-    <div className="flex justify-center ">
+    <div className="flex flex-col items-center">
       <Calendar
         nextLabel="next"
         prevLabel="prev"
@@ -77,9 +77,7 @@ export default function Bookings() {
         onClickDay={handleDateClick}
         onChange={handleWeekChange}
         tileContent={renderTileContent}
-        className={
-          "w-full md:w-[50%] h-[50%]  top-[50%] left-[50%] right-[auto], bottom-[auto]"
-        }
+        className={"w-full md:w-[50%] md:h-[50%] top-[50%] left-[50%] right-[auto] bottom-[auto]"}
       />
 
       {/*Showing bookings in MOdal respective on Date */}
@@ -123,6 +121,12 @@ export default function Bookings() {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <div className="text-justify  mt-4 text-ms p-2">
+      <p><span className="text-red-500">Note : </span>The application displays booked slots on their respective days and enables users to view details by clicking on a booked slot.</p>
+      <p> When a user clicks on a booked slot, a modal window opens, presenting the available bookings for that particular day. </p>
+      </div>
+      
     </div>
   );
 }

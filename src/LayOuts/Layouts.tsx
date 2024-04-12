@@ -3,12 +3,15 @@ import Navbar from "../Components/Navbar/Navbar";
 
 export default function Layouts() {
   return (
-    <div className="container max-w-6xl mx-auto min-h-screen border-2 border-slate-500">
+    <div className="container max-w-6xl mx-auto min-h-screen">
       <nav>
         <Navbar />
       </nav>
-
-      <Outlet />
+       
+       <div className="w-full">
+       <Outlet />
+       </div>
+    
     </div>
   );
 }
